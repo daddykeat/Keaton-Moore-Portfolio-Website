@@ -4,7 +4,22 @@ const links = document.querySelector(".nav-links");
 
 toggle?.addEventListener("click", () => {
   const open = links.classList.toggle("open");
-  toggle.setAttribute("aria-expanded", String(open));
+  toggle?.setAttribute("aria-expanded", String(open));
+});
+
+// ✅ Optional polish: close menu when tapping/clicking outside
+document.addEventListener("click", (e) => {
+  if (!links || !toggle) return;
+  const isOpen = links.classList.contains("open");
+  if (!isOpen) return;
+
+  const clickedInsideMenu = links.contains(e.target);
+  const clickedToggle = toggle.contains(e.target);
+
+  if (!clickedInsideMenu && !clickedToggle) {
+    links.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+  }
 });
 
 // Theme toggle (dark/light)
@@ -12,6 +27,8 @@ const themeBtn = document.querySelector(".theme-toggle");
 const root = document.documentElement;
 
 function setTheme(mode){
+  if(!themeBtn) return;
+
   if(mode === "light"){
     root.setAttribute("data-theme", "light");
     themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
@@ -31,7 +48,8 @@ themeBtn?.addEventListener("click", () => {
 });
 
 // Footer year
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearEl = document.getElementById("year");
+if(yearEl) yearEl.textContent = new Date().getFullYear();
 
 // Scrollspy active nav link
 const sections = ["about","skills","projects","experience","contact"]
@@ -67,7 +85,7 @@ revealEls.forEach(el => revealObs.observe(el));
 
 // Close menu when clicking a link (mobile)
 navLinks.forEach(a => a.addEventListener("click", () => {
-  links.classList.remove("open");
+  links?.classList.remove("open");
   toggle?.setAttribute("aria-expanded", "false");
 }));
 
@@ -96,144 +114,3 @@ if (parallax && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) 
   onScroll();
 }
 
-// ---------------------------
-// Stackable filtering + FLIP
-// Category (all/design/web/motion) + Tool (photoshop/html/aftereffects/etc.)
-// ---------------------------
-const filterBtns = document.querySelectorAll(".filter-btn");
-const projectCards = Array.from(document.querySelectorAll(".cards .card"));
-
-let activeCategory = "all";
-let activeTool = null;
-
-// Pills
-const pillCategory = document.getElementById("pillCategory");
-const pillTool = document.getElementById("pillTool");
-const clearAllBtn = document.querySelector(".filter-clear");
-
-function setPill(btn, label){
-  if(!btn) return;
-  const text = btn.querySelector(".pill-text");
-  if(!label){
-    btn.hidden = true;
-    if(text) text.textContent = "";
-  }else{
-    btn.hidden = false;
-    if(text) text.textContent = label;
-  }
-}
-
-function updatePills(){
-  setPill(pillCategory, activeCategory === "all" ? "" : `Category: ${activeCategory}`);
-  setPill(pillTool, activeTool ? `Tool: ${activeTool}` : "");
-
-  const any = activeCategory !== "all" || !!activeTool;
-  if(clearAllBtn) clearAllBtn.hidden = !any;
-}
-
-function getRects() {
-  return new Map(projectCards.map(el => [el, el.getBoundingClientRect()]));
-}
-
-function animateFLIP(firstRects) {
-  const lastRects = new Map(projectCards.map(el => [el, el.getBoundingClientRect()]));
-
-  projectCards.forEach(el => {
-    if(el.classList.contains("hidden")) return;
-
-    const first = firstRects.get(el);
-    const last = lastRects.get(el);
-    if (!first || !last) return;
-
-    const dx = first.left - last.left;
-    const dy = first.top - last.top;
-
-    if (dx || dy) {
-      el.style.transform = `translate(${dx}px, ${dy}px)`;
-      el.style.transition = "transform 0s";
-      requestAnimationFrame(() => {
-        el.style.transition = "transform .35s cubic-bezier(.2,.9,.2,1)";
-        el.style.transform = "";
-      });
-    }
-  });
-}
-
-function matchesFilters(card){
-  const category = (card.dataset.category || "").trim();
-  const tools = (card.dataset.tools || "").split(/\s+/).filter(Boolean);
-
-  const catOk = (activeCategory === "all") || (category === activeCategory);
-  const toolOk = (!activeTool) || tools.includes(activeTool);
-
-  return catOk && toolOk;
-}
-
-function applyFilters(){
-  const firstRects = getRects();
-
-  projectCards.forEach(card => {
-    const show = matchesFilters(card);
-    card.classList.toggle("hidden", !show);
-  });
-
-  requestAnimationFrame(() => animateFLIP(firstRects));
-  updatePills();
-}
-
-// Category button clicks
-filterBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-    filterBtns.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    activeCategory = (btn.dataset.filter || "all").trim();
-    applyFilters();
-  });
-});
-
-// Tool tag clicks (event delegation)
-document.addEventListener("click", (e) => {
-  const tag = e.target.closest(".tag-btn");
-  if(!tag) return;
-
-  const tool = (tag.dataset.tool || "").trim();
-  if(!tool) return;
-
-  // Toggle tool
-  activeTool = (activeTool === tool) ? null : tool;
-
-  // Active state styling for tags
-  document.querySelectorAll(".tag-btn").forEach(t => {
-    t.classList.toggle("active", activeTool && t.dataset.tool === activeTool);
-  });
-
-  applyFilters();
-});
-
-// Clicking pills clears only that filter
-pillCategory?.addEventListener("click", () => {
-  activeCategory = "all";
-  filterBtns.forEach(b => b.classList.toggle("active", b.dataset.filter === "all"));
-  applyFilters();
-});
-
-pillTool?.addEventListener("click", () => {
-  activeTool = null;
-  document.querySelectorAll(".tag-btn").forEach(t => t.classList.remove("active"));
-  applyFilters();
-});
-
-// Clear all
-clearAllBtn?.addEventListener("click", () => {
-  activeCategory = "all";
-  activeTool = null;
-
-  filterBtns.forEach(b => b.classList.toggle("active", b.dataset.filter === "all"));
-  document.querySelectorAll(".tag-btn").forEach(t => t.classList.remove("active"));
-
-  applyFilters();
-});
-
-// Initialize pills on load
-updatePills();
