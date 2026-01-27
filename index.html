@@ -1,100 +1,483 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Keaton Moore - Personal Design Portfolio">
-    <title>Keaton Moore - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="<meta name="description" content="Keaton Moore — Graphic Information Technology student focused on full-stack web development, visual design, and motion fundamentals. Portfolio featuring Photoshop, InDesign, Illustrator, and web projects." />
+
+  <title>Keaton Moore | Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Icons (FontAwesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-    <header>
-        <nav>
-            <div class="logo">Keaton Moore</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
-        </nav>
-    </header>
+  <!-- Skip link for accessibility -->
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Hi, I'm Keaton Moore</h1>
-                <p class="hero-subtitle">Designer & Creative Professional</p>
-                <a href="#portfolio" class="cta-button">View My Work</a>
-            </div>
-        </section>
+  <!-- Parallax background layer -->
+  <div class="parallax-layer" aria-hidden="true"></div>
 
-        <section id="about" class="about">
-            <div class="container">
-                <h2>About Me</h2>
-                <p>Welcome to my portfolio! I'm passionate about creating beautiful, functional designs that make a difference. This space showcases my work and journey as a designer.</p>
-            </div>
-        </section>
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Primary">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">KEATON MOORE</span>
+      </a>
 
-        <section id="portfolio" class="portfolio">
-            <div class="container">
-                <h2>My Work</h2>
-                <div class="portfolio-grid">
-                    <div class="portfolio-item">
-                        <div class="portfolio-image-placeholder">
-                            <span>Project 1</span>
-                        </div>
-                        <h3>Project Title 1</h3>
-                        <p>Brief description of the project and its goals.</p>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-image-placeholder">
-                            <span>Project 2</span>
-                        </div>
-                        <h3>Project Title 2</h3>
-                        <p>Brief description of the project and its goals.</p>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-image-placeholder">
-                            <span>Project 3</span>
-                        </div>
-                        <h3>Project Title 3</h3>
-                        <p>Brief description of the project and its goals.</p>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-image-placeholder">
-                            <span>Project 4</span>
-                        </div>
-                        <h3>Project Title 4</h3>
-                        <p>Brief description of the project and its goals.</p>
-                    </div>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="navLinks">
+        <span class="sr-only">Open menu</span>
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#contact">Contact</a>
+
+        <button class="theme-toggle" type="button" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal delay-1">
+          <p class="eyebrow">
+            <i class="fa-solid fa-sparkles"></i>
+            Design • Web • Motion
+          </p>
+
+          <h1>
+            Hi, I’m <span class="grad">Keaton Moore</span> —
+            I design bold visuals and build modern web experiences.
+          </h1>
+
+          <p class="lede">
+            I’m a <strong>Graphic Information Technology</strong> student focusing on
+            <strong>full-stack web development</strong>. I blend a design-first mindset with clean front-end builds,
+            and I’m using this site to showcase projects as I complete them.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn primary" href="#projects">
+              <i class="fa-solid fa-grid-2"></i> View Projects
+            </a>
+            <a class="btn ghost" href="#contact">
+              <i class="fa-solid fa-paper-plane"></i> Contact Me
+            </a>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric">
+              <div class="metric-num">Design</div>
+              <div class="metric-label">Photoshop • InDesign • Illustrator</div>
+            </div>
+            <div class="metric">
+              <div class="metric-num">Web</div>
+              <div class="metric-label">HTML • CSS • JS</div>
+            </div>
+            <div class="metric">
+              <div class="metric-num">Motion</div>
+              <div class="metric-label">After Effects (Learning)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card reveal delay-2">
+          <div class="avatar" aria-hidden="true">
+            <i class="fa-solid fa-user-astronaut"></i>
+          </div>
+          <h2 class="card-title">Quick Snapshot</h2>
+          <ul class="quick-list">
+            <li><i class="fa-solid fa-wand-magic-sparkles"></i> Strength: Bold visual design + layout</li>
+            <li><i class="fa-solid fa-laptop-code"></i> Studying: GIT (Full-Stack Web Dev)</li>
+            <li><i class="fa-solid fa-bullseye"></i> Building: A portfolio I can update every project</li>
+          </ul>
+          <div class="card-actions">
+            <a class="pill" href="https://github.com/daddykeat" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a class="pill" href="https://www.linkedin.com/in/keaton-moore-aa672b357/" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-linkedin"></i> LinkedIn
+            </a>
+          </div>
+          <p class="fineprint">
+            Replace the links with your real profiles.
+          </p>
+        </div>
+      </div>
+
+      <div class="hero-bg" aria-hidden="true"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal delay-1">
+          <h2>About</h2>
+          <p class="muted">A quick intro and what I’m aiming to build next.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="panel reveal delay-2">
+            <h3>Bio</h3>
+            <p>
+              I’m Keaton Moore, a Graphic Information Technology student focused on full-stack web development
+              with a strong design-first mindset. I enjoy creating layouts that feel clean, modern, and purposeful,
+              while still paying attention to details like spacing, typography, and visual hierarchy.
+            </p>
+            <p class="muted">
+              Through this course, I’m building a growing portfolio of projects that combine visual design and front-end
+              development. My goal is to graduate with real, finished work that demonstrates both creativity and technical skill.
+            </p>
+          </div>
+
+          <div class="panel reveal delay-3">
+            <h3>Highlights</h3>
+
+            <!-- Custom Highlights -->
+            <div class="highlights">
+              <div class="highlight">
+                <i class="fa-solid fa-palette"></i>
+                <div>
+                  <div class="highlight-title">Visual Design Focus</div>
+                  <div class="muted">Strong contrast, dramatic lighting, and bold typography.</div>
                 </div>
+              </div>
+
+              <div class="highlight">
+                <i class="fa-solid fa-code"></i>
+                <div>
+                  <div class="highlight-title">Front-End Structure</div>
+                  <div class="muted">Clean HTML, organized CSS, and responsive layouts.</div>
+                </div>
+              </div>
+
+              <div class="highlight">
+                <i class="fa-solid fa-film"></i>
+                <div>
+                  <div class="highlight-title">Motion Design Learning</div>
+                  <div class="muted">Currently building animation skills in After Effects.</div>
+                </div>
+              </div>
             </div>
-        </section>
 
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Get In Touch</h2>
-                <p>I'm always open to discussing new projects and opportunities.</p>
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" rows="5" required></textarea>
-                    <button type="submit" class="submit-button">Send Message</button>
-                </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section alt" id="skills">
+      <div class="container">
+        <div class="section-head reveal delay-1">
+          <h2>Skills</h2>
+          <p class="muted">Tools I use and what I’m practicing right now.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="panel reveal delay-2">
+            <h3><i class="fa-solid fa-code"></i> Front-End</h3>
+            <div class="badges">
+              <span class="badge"><i class="fa-brands fa-html5"></i> HTML</span>
+              <span class="badge"><i class="fa-brands fa-css3-alt"></i> CSS</span>
+              <span class="badge"><i class="fa-brands fa-js"></i> JavaScript</span>
+              <span class="badge"><i class="fa-solid fa-mobile-screen"></i> Responsive Design</span>
+              <span class="badge"><i class="fa-solid fa-universal-access"></i> Accessibility</span>
             </div>
-        </section>
-    </main>
+            <ul class="bullets">
+              <li>Semantic HTML structure for accessibility</li>
+              <li>CSS Flexbox and Grid for responsive layouts</li>
+              <li>Component-style styling with reusable classes</li>
+            </ul>
+          </div>
 
-    <footer>
-        <p>&copy; 2026 Keaton Moore. All rights reserved.</p>
-    </footer>
+          <div class="panel reveal delay-3">
+            <h3><i class="fa-solid fa-pen-nib"></i> Design</h3>
+            <div class="badges">
+              <span class="badge">Photoshop</span>
+              <span class="badge">InDesign</span>
+              <span class="badge">Illustrator</span>
+              <span class="badge"><i class="fa-solid fa-film"></i> After Effects (Motion Basics)</span>
+            </div>
+            <ul class="bullets">
+              <li>Typography, composition, and visual hierarchy</li>
+              <li>Print-ready layout formatting in InDesign</li>
+              <li>Vector graphics + clean asset workflows</li>
+            </ul>
+          </div>
 
-    <script src="script.js"></script>
+          <div class="panel reveal delay-2">
+            <h3><i class="fa-solid fa-wand-magic-sparkles"></i> AI Workflow</h3>
+            <ul class="bullets">
+              <li>Rapid layout prototyping and design exploration</li>
+              <li>CSS refinement and debugging assistance</li>
+              <li>Improving readability and code organization</li>
+            </ul>
+          </div>
+
+          <div class="panel reveal delay-3">
+            <h3><i class="fa-solid fa-people-group"></i> Professional</h3>
+            <ul class="bullets">
+              <li>Project planning and milestone tracking</li>
+              <li>Iterative design based on feedback</li>
+              <li>Clear written and visual communication</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal delay-1">
+          <h2>Projects</h2>
+          <p class="muted">Filters below let you browse by category and tool.</p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="project-filters reveal delay-2" role="tablist" aria-label="Project filters">
+          <button class="filter-btn active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="design" type="button">Design</button>
+          <button class="filter-btn" data-filter="web" type="button">Web</button>
+          <button class="filter-btn" data-filter="motion" type="button">Motion</button>
+        </div>
+
+        <!-- Active Filter Pills -->
+        <div class="filter-status reveal delay-3" aria-live="polite">
+          <span class="muted">Active filters:</span>
+
+          <button class="filter-pill" id="pillCategory" type="button" hidden>
+            <span class="pill-text"></span>
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+          <button class="filter-pill" id="pillTool" type="button" hidden>
+            <span class="pill-text"></span>
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+          <button class="filter-clear muted" type="button" hidden>Clear all</button>
+        </div>
+
+        <!-- Project Cards -->
+        <div class="cards">
+
+          <!-- Project 1: Design (with image + tool tags) -->
+          <article class="card reveal project-featured"
+            data-category="design"
+            data-tools="photoshop indesign illustrator poster">
+
+            <div class="project-image">
+              <img src="assets/fight-poster.JPG" alt="Combat sports fight poster design by Keaton Moore">
+            </div>
+
+            <div class="card-top">
+              <div class="tag-row">
+                <button class="tag tag-btn" data-tool="photoshop" type="button">Photoshop</button>
+                <button class="tag tag-btn" data-tool="indesign" type="button">InDesign</button>
+                <button class="tag tag-btn" data-tool="illustrator" type="button">Illustrator</button>
+                <button class="tag tag-btn" data-tool="poster" type="button">Poster Design</button>
+              </div>
+
+              <h3>Combat Sports Fight Poster</h3>
+              <p class="muted">
+                Designed a promotional fight poster using Photoshop for photo compositing and visual effects,
+                and InDesign for layout and final print-ready formatting. Vector graphics and typography concepts
+                were also developed using Illustrator techniques, creating a bold, professional event-style design.
+              </p>
+            </div>
+
+            <div class="card-bottom">
+              <a class="btn small" href="assets/fight-poster.JPG" target="_blank" rel="noreferrer">
+                <i class="fa-solid fa-image"></i> View Full
+              </a>
+              <a class="btn small ghost" href="#">
+                <i class="fa-solid fa-file"></i> Source Files
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2: Web placeholder -->
+          <article class="card reveal"
+            data-category="web"
+            data-tools="html css javascript">
+
+            <div class="card-top">
+              <div class="tag-row">
+                <button class="tag tag-btn" data-tool="html" type="button">HTML</button>
+                <button class="tag tag-btn" data-tool="css" type="button">CSS</button>
+                <button class="tag tag-btn" data-tool="javascript" type="button">JavaScript</button>
+              </div>
+
+              <h3>Project Two (Coming Soon)</h3>
+              <p class="muted">
+                In progress — I’ll add a live link, screenshots, and a short breakdown once it’s complete.
+              </p>
+            </div>
+
+            <div class="card-bottom">
+              <a class="btn small" href="#">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live
+              </a>
+              <a class="btn small ghost" href="#">
+                <i class="fa-brands fa-github"></i> Code
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3: Motion placeholder -->
+          <article class="card reveal"
+            data-category="motion"
+            data-tools="aftereffects motion">
+
+            <div class="card-top">
+              <div class="tag-row">
+                <button class="tag tag-btn" data-tool="aftereffects" type="button">After Effects</button>
+                <button class="tag tag-btn" data-tool="motion" type="button">Motion</button>
+              </div>
+
+              <h3>Project Three (Coming Soon)</h3>
+              <p class="muted">
+                Next up — this slot will feature a motion project with a preview (GIF/MP4), tools used, and what I learned.
+              </p>
+            </div>
+
+            <div class="card-bottom">
+              <a class="btn small" href="#">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live
+              </a>
+              <a class="btn small ghost" href="#">
+                <i class="fa-brands fa-github"></i> Files
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section alt" id="experience">
+      <div class="container">
+        <div class="section-head reveal delay-1">
+          <h2>Experience</h2>
+          <p class="muted">Short timeline items that make the portfolio feel “real.”</p>
+        </div>
+
+        <div class="timeline reveal delay-2">
+          <div class="t-item">
+            <div class="t-dot"></div>
+            <div class="t-content">
+              <div class="t-top">
+                <strong>Graphic Information Technology (Student)</strong>
+                <span class="muted">2025–Present</span>
+              </div>
+              <p class="muted">
+                Building skills in web development, design workflows, and motion fundamentals while shipping projects.
+              </p>
+            </div>
+          </div>
+
+          <div class="t-item">
+            <div class="t-dot"></div>
+            <div class="t-content">
+              <div class="t-top">
+                <strong>Portfolio Development</strong>
+                <span class="muted">2026</span>
+              </div>
+              <p class="muted">Continuously adding projects and improving UI/UX polish.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head reveal delay-1">
+          <h2>Contact</h2>
+          <p class="muted">Best option: email + social links.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="panel reveal delay-2">
+            <h3>Let’s connect</h3>
+            <p class="muted">
+              Add your real links. Keep it professional and simple.
+            </p>
+
+            <div class="contact-links">
+             <a class="contact-link" href="mailto:keatonmoore4@gmail.com">
+               <i class="fa-solid fa-envelope"></i> keatonmoore4@gmail.com
+             </a>
+
+             <a class="contact-link" href="mailto:kmoor119@asu.edu">
+               <i class="fa-solid fa-graduation-cap"></i> kmoor119@asu.edu
+             </a>
+
+             <a class="contact-link" href="https://github.com/daddykeat" target="_blank" rel="noreferrer">
+               <i class="fa-brands fa-github"></i> github.com/daddykeat
+             </a>
+
+             <a class="contact-link" href="https://www.linkedin.com/in/keaton-moore-aa672b357/" target="_blank" rel="noreferrer">
+               <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
+             </a>
+           </div>
+           </div>
+
+          <form class="panel reveal delay-3" onsubmit="return false;">
+            <h3>Message (optional)</h3>
+            <label>
+              <span class="muted">Name</span>
+              <input type="text" placeholder="Your name" autocomplete="name" />
+            </label>
+            <label>
+              <span class="muted">Email</span>
+              <input type="email" placeholder="you@email.com" autocomplete="email" />
+            </label>
+            <label>
+              <span class="muted">Message</span>
+              <textarea rows="4" placeholder="Write a short message..."></textarea>
+            </label>
+            <button class="btn primary" type="button">
+              <i class="fa-solid fa-paper-plane"></i> Send (demo)
+            </button>
+            <p class="fineprint muted">
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="muted">
+  © <span id="year"></span> Keaton Moore •
+  <a href="https://github.com/daddykeat" target="_blank" rel="noreferrer">github.com/daddykeat</a>
+</p>
+
+      <a class="to-top" href="#top"><i class="fa-solid fa-arrow-up"></i> Top</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
