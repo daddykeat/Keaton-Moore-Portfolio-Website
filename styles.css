@@ -54,6 +54,11 @@ nav {
     color: #3498db;
 }
 
+.nav-links a.active {
+    color: #3498db;
+    font-weight: 600;
+}
+
 .burger {
     display: none;
     cursor: pointer;
